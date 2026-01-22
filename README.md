@@ -29,7 +29,7 @@ Relatório da exploração e análise da vulnerabilidade de injeção de express
    - Mapeamento de rotas e endpoints de workflows.  
 3. **Exploração**  
    - Envio de payloads de expressão que avaliam código JavaScript e invocam `child_process`.  
-   - Exemplo de padrão malicioso: `this.process.mainModule.require('child_process').execSync(...)`  
+   0- Exemplo de padrão malicioso: `this.process.mainModule.require('child_process').execSync(...)`  
 4. **Pós-exploração**  
    - Monitoramento de criação de processos e evidências de execução.  
 5. **Limpeza**  
@@ -37,8 +37,17 @@ Relatório da exploração e análise da vulnerabilidade de injeção de express
 
 ## Exemplos de comandos
 ```bash
-# checar saúde/versão (exemplo)
+
+## checar saúde/versão (exemplo)
 curl -s http://TARGET:5678/health
 
 # exemplo genérico de POST para endpoint de workflows
 curl -X POST http://TARGET:5678/rest/workflows -H "Content-Type: application/json" -d '{"some":"payload"}'
+```
+## Referências
+- TryHackMe room: n8n: CVE-2025-68613  
+- Repositórios e advisories públicos sobre a CVE  
+  - [Exploit PoC](https://github.com/wioui/n8n-CVE-2025-68613-exploit)  
+  - [Commit fix oficial](https://github.com/n8n-io/n8n/commit/08f332015153decdda3c37ad4fcb9f7ba13a7c79)  
+  - [Repositório n8n](https://github.com/n8n-io/n8n)  
+  - [Blog post técnico](https://blog.ogwilliam.com/post/n8n-rce-vulnerability-cve-2025-68613)
